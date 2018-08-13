@@ -1,0 +1,32 @@
+<div class="pull-right">
+    <form action="/home/index" method="post">
+        <select id="process" name="process" class="form-control" style="display: inline; width: 130px;" onchange="setOption(this, document.getElementById('project'), pjp)">
+            {% for i in pjp.keys() %}
+            <option value="{{ i }}" {% if process == i %} selected{% endif %}>{{ i }}</option>
+            {% endfor %}
+        </select>
+
+        <select id="project" name="project" class="form-control" style="display: inline; width: 140px;">
+            {% for i in pjp[process] %}
+            <option value="{{ i }}" {% if project == i %} selected{% endif %}>{{ i }}</option>
+            {% endfor %}
+        </select>
+
+        <button class="btn btn-default" type="submit">Go</button>
+    </form>
+</div>
+
+<!--　Dynamic Drop-Down List -->
+<script>
+var pjp = {{ pjp_json | safe }};
+
+function setOption(base, target, dict) {
+  target.options.length = 0;
+  for (i = 0; i < dict[base.value].length; i++) {
+      var opt = document.createElement('option');
+      opt.value = dict[base.value][i];
+      opt.text = dict[base.value][i];
+      target.options.add(opt);
+  }
+}
+</script>

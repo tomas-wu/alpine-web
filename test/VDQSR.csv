@@ -1,0 +1,6 @@
+Index,Metric,Unit,Target_Low,Target_High,Boundry_Low,Boundry_High,Value
+1,Output 1,V,1,2,3,4,0
+2,Output 2,V,1,2,3,4,1.5
+3,Output 3,V,1,2,3,4,2.5
+4,Output 4,V,1,2,3,4,3.5
+5,Output 5,V,1,2,3,4,4.5

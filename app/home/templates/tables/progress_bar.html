@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-sm-3">
+        <div class="row">
+            <div class="col-sm-2"><b>Submitted</b></div>
+            <div class="col-sm-7">
+                <div class="progress" style="margin:0px;">
+                    <!-- xywu: bootstrap-progressbar fails stacking ; change color of progress-bar-success in custom.css -->
+                    <div class="progress-bar progress-bar-info" role="progressbar" style="width:{{ progress["submitted"][0]*100/progress["submitted"][1]}}%">
+                        {{ progress["submitted"][0] }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="row">
+            <div class="col-sm-2"><b>Metrics</b></div>
+            <div class="col-sm-7">
+                <div class="progress" style="margin:0px;">
+                    <!-- xywu: bootstrap-progressbar fails stacking ; change color of progress-bar-success in custom.css -->
+                    {% for i, color in [(0, "success"), (1, "warning"), (2, "danger")] %}
+                    <div class="progress-bar progress-bar-{{ color }}" role="progressbar" style="width:{{ progress["metrics"][i]*100/progress["metrics"][3] }}%">
+                        {% if progress["metrics"][i] >0 %}{{ progress["metrics"][i] }}{% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+    </div>
+<div class="col-sm-6 text-right"><b>Last Update</b> : {{ today }}</div>
+</div>
